@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+</head>
+
+<body>
+  <div class="header">
+    <h2>NBA Webpage</h2>
+    <p>Designed by: Lucus Persaud, Amaan Ali, Daniel Malakovski</p>
+  </div>
+
+  <div id="navbar">
+    <a class="home" href="{{ url_for('home') }}">Home</a>
+    <a class="login" href="{{ url_for('login') }}">Login</a>
+    <a class="register" href="{{ url_for('register') }}">Register</a>
+    <a class="teams" href="{{ url_for('teams') }}">Teams</a>
+    <a class="leaders" href="{{ url_for('leaders') }}">Leaders</a>
+    <a class="draft" href="{{ url_for('draft') }}">Draft</a>
+    <a href="https://fantasy.espn.com/basketball/welcome">Fantasy</a>
+    <a href="https://www.ticketmaster.com/nba">Tickets</a>
+  </div>
+  <div class="page-content">
+  {% block content %}
+  {% endblock %}
+  </div>
+  
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% extends "nav.html" %}
+{% block content %}
+<h1>Login</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <div> {{ message }} </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% endblock %}
