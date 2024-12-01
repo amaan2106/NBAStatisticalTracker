@@ -1,5 +1,338 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/leaders.css') }}">
-{% extends "nav.html" %}
-{% block content %}
+<head>
+  <meta name="viewport">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/leaders.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
 
-{% endblock %}
+<body id="main">
+  {% extends "nav.html" %}
+  {% block content %}
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <div id="flash-message">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul class=flashes>
+            {% for message in messages %}
+            <div> {{ message }} </div>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endwith %}
+        </div>
+        <h1 class="fw-light welcome">Welcome To The NBA Leaders Page</h1>
+        <p class="lead leaders-info">Here you can view the current leaders (Top 5 Players) for various NBA season
+          awards. Our page also has our own leaderboard that allows our users to vote for a player for each category of
+          award. (1 vote submission per user)</p>
+        <p class="lead instructions">How it works: Below you can find a row of players for each of the 4 different NBA
+          awards. Please select a player by clicking on the circle-radio of the players card box (found at the bottom of
+          the player's card). Make sure you place a vote for each of the 4 categories before clicking the submit button
+          at the bottom of the page. You are able to vote for only 1 player per category.</p>
+        <p class="important">Please note: Once you submit your vote, there is no way of editing/changing. In order to
+          keep voting fair for all of our users we have opted for this style of voting. Double check your choices before
+          submitting!</p>
+      </div>
+    </div>
+  </section>
+  <form action="/api/leaders" method="POST">
+    <div id="award-title" class="container">
+      <h1>NBA Regular Season MVP Standings: </h1>
+    </div>
+    <div id="MVP" class="container">
+
+      <div class="row row-cols-1 row-cols-md-5">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/y9vHVKYeArdXuQy4aFeex8HvDl4=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/23427811/usa_today_18130469.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 2</p>
+              <p class="card-text">Votes: {{ jokic_votes }}</p>
+              <input type="radio" name="mvp_vote" value="Jokic">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/N8ifzvH3pEVW9C30NeBSfrpS4QE=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/24474005/1470564531.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 1</p>
+              <p class="card-text">Votes: {{ embiid_votes }}</p>
+              <input type="radio" name="mvp_vote" value="Embiid">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk2MjE0MjU3MjYyNTM2MjE5/usatsi_20111333_168388303_lowres.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 3</p>
+              <p class="card-text">Votes: {{ antentokounmpo_mvp_votes }}</p>
+              <input type="radio" name="mvp_vote" value="Antentokounmpo">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://thespun.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg3NDI1NzAyNzE0Mjg3ODg3/boston-celtics-v-houston-rockets.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 4</p>
+              <p class="card-text">Votes: {{ tatum_votes }}</p>
+              <input type="radio" name="mvp_vote" value="Tatum">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/TPt_1DUoo4nqUesAm0aPFriLvyo=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/24265469/1445907646.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 5</p>
+              <p class="card-text">Votes: {{ sabonis_votes }}</p>
+              <input type="radio" name="mvp_vote" value="Sabonis">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Beginning of new section-->
+    <div id="award-title" class="container">
+      <h1>NBA Regular Season DPOY Standings: </h1>
+    </div>
+    <div id="MVP" class="container">
+
+      <div class="row row-cols-1 row-cols-md-5">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/BZOly06pV26IRb4-69s6DdODyxk=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/24319768/1245808563.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 2</p>
+              <p class="card-text">Votes: {{ jackson_votes }}</p>
+              <input type="radio" name="dpoy_vote" value="Jackson">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://m.basketnews.com/image-347570-crop700x700.jpg" id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 1</p>
+              <p class="card-text">Votes: {{ lopez_votes }}</p>
+              <input type="radio" name="dpoy_vote" value="Lopez">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/SsYKXoHvW7YtVd47yzIjPPD6N8A=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19622861/1200799219.jpg.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 3</p>
+              <p class="card-text">Votes: {{ claxton_votes }}</p>
+              <input type="radio" name="dpoy_vote" value="Claxton">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://res.cloudinary.com/ybmedia/image/upload/c_crop,h_800,w_1200,x_0,y_0/c_fill,f_auto,h_1200,q_auto,w_1200/v1/m/0/7/07788d517e8bf4e2e8c2c74623a9e5bc42b22e90/usatsi_20004851_168389536_lowres.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 5</p>
+              <p class="card-text">Votes: {{ adebayo_votes }}</p>
+              <input type="radio" name="dpoy_vote" value="Adebayo">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.basketballnetwork.net/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk1NTM0NTQyOTg2MDI4NjEz/giannis-antetokounmpo.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 4</p>
+              <p class="card-text">Votes: {{ antentokounmpo_dpoy_votes }}</p>
+              <input type="radio" name="dpoy_vote" value="Antetokounmpo">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Beginning of new section-->
+    <div id="award-title" class="container">
+      <h1>NBA Regular Season 6th Man Standings: </h1>
+    </div>
+    <div id="MVP" class="container">
+
+      <div class="row row-cols-1 row-cols-md-5">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkzMDM4MTg4MjcxMzgwMTc2/brogdon-celtics.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 1</p>
+              <p class="card-text">Votes: {{ brogdon_votes }}</p>
+              <input type="radio" name="six_vote" value="Brogdon">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/U8HIzjVyUEjwNnnNy2nFiLLR7wA=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22667603/1232907700.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 2</p>
+              <p class="card-text">Votes: {{ quickley_votes }}</p>
+              <input type="radio" name="six_vote" value="Quickley">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg4NjI1NzE0OTY1MTI4OTQw/usatsi_18034083_168390270_lowres.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 3</p>
+              <p class="card-text">Votes: {{ powell_votes }}</p>
+              <input type="radio" name="six_vote" value="Powell">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkwMTQ3NDI0Mjk0MDIwMzc3/usatsi_17945655_168388689_lowres.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 4</p>
+              <p class="card-text">Votes:{{ maxey_votes }} </p>
+              <input type="radio" name="six_vote" value="Maxey">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/ackFiJuhaYTQuL4203yxIUgoJBs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/24460851/usa_today_20082644.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 5</p>
+              <p class="card-text">Votes: {{ monk_votes }}</p>
+              <input type="radio" name="six_vote" value="Monk">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Beginning of new section-->
+    <div id="award-title" class="container">
+      <h1>NBA Regular Season ROTY Standings: </h1>
+    </div>
+    <div id="MVP" class="container">
+
+      <div class="row row-cols-1 row-cols-md-5">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://media.bleacherreport.com/image/upload/c_fill,g_faces,w_1600,h_1600,q_95/v1664849128/saobje6xndn1gx1ni538.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 1</p>
+              <p class="card-text">Votes: {{ banchero_votes }}</p>
+              <input type="radio" name="roty_vote" value="Banchero">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/56ZEgHPUYJmFWiduJbJ056J6IkA=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/24120595/usa_today_19182794.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 2</p>
+              <p class="card-text">Votes: {{ williams_votes }}</p>
+              <input type="radio" name="roty_vote" value="Williams">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkzMTcwOTE3MjU2MzQxMTUx/usatsi_19262729_168388302_lowres.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 3</p>
+              <p class="card-text">Votes: {{ kessler_votes }}</p>
+              <input type="radio" name="roty_vote" value="Kessler">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/PLPjn-WBEAaJpJgmgCaSn_lu-S0=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/24174847/1438416625.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 4</p>
+              <p class="card-text">Votes: {{ ivey_votes }}</p>
+              <input type="radio" name="roty_vote" value="Ivey">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="https://www.ballysports.com/images/image/private/t_1-1_768/f_auto/v1671661708/prod/ckoyu2xyzelxzlbk9try.jpg"
+              id="teams-logo">
+            <div class="card-body">
+              <p class="card-text">NBA Official Rank: 5</p>
+              <p class="card-text">Votes: {{ mathurin_votes }}</p>
+              <input type="radio" name="roty_vote" value="Mathurin">
+              <div class="d-flex justify-content-between align-items-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="MVP-vote" class="d-grid gap-2 vote">
+      <button type="submit" class="btn btn-primary">Submit Votes</button>
+    </div>
+  </form>
+  {% endblock %}
+</body>

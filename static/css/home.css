@@ -2,3 +2,80 @@
   background-color: #be2b1e;
   color: white;
 }
+
+/* Set background color for the page */
+body {
+  background-color: #f2f2f2;
+}
+
+/* Style for the page header */
+h1 {
+  font-size: 36px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Style for the table */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+}
+
+/* Style for the table header */
+thead th {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+  padding: 12px;
+}
+
+/* Style for the table rows */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+  transition: opacity 0.3s ease; /* add transition for smooth effect */
+}
+
+tbody tr:hover {
+  opacity: 0.4; /* decrease opacity on hover */
+}
+
+/* Style for the table cells */
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Style for the "Show More" button */
+#show-more {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover style for the "Show More" button */
+#show-more:hover {
+  background-color: #3e8e41;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+  td {
+    font-size: 14px;
+  }
+}

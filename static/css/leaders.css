@@ -2,3 +2,30 @@
   background-color: #be2b1e;
   color: white;
 }
+
+.vote{
+  margin:20px;
+}
+
+.instructions{
+  color: darkcyan;
+}
+.important{
+  color: indianred;
+  font-weight: bold;
+}
+.welcome{
+  color: white;
+}
+.leaders-info{
+  color: white;
+}
+#award-title{
+  color: white;
+}
+#main{
+  background-image: url('https://i.pinimg.com/originals/5d/71/6a/5d716a72e2110deeb47038ed423eca32.jpg');
+}
+#flash-message{
+  color: orangered
+}

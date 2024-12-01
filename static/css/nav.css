@@ -28,6 +28,7 @@ body {
 #navbar {
   overflow: hidden;
   background-color: #333;
+  z-index: 9999;
 }
 
 #navbar a {
@@ -51,6 +52,44 @@ body {
 
 #navbar a.login{
   float: right;
+}
+
+#navbar .current-user{
+  float: right;
+}
+#navbar a.logout{
+  float: right;
+}
+#navbar a.space{
+  float: right;
+}
+#navbar a.space:hover{
+  background-color: #333;
+  color: white;
+}
+#navbar a.current-user:hover {
+  background-color: #333;
+  color: white;
+}
+#navbar .user-icon{
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 0px;
+  text-decoration: none;
+  font-size: 27px
+}
+a.logout{
+  color: #f2f2f2;
+  text-align: center;
+  padding: 5px 5px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+a.logout:hover{
+  background-color: #ddd;
+  color: black;
 }
 
 .content {

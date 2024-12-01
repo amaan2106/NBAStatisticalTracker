@@ -1,34 +1,38 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 {% extends "nav.html" %}
 {% block content %}
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-<p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      <p>The navbar will stick to the top when you reach its scroll position.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-      
-      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <h1>NBA Players Stats 2022-2023</h1>
+  <table id="players-container" >
+    <thead>
+      <tr>
+        <th>Rk</th>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Age</th>
+        <th>PPG</th>
+        <th>RPG</th>
+        <th>APG</th>
+        <th>SPG</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in players %}
+        <tr>
+          <td>{{ player['RANK'] }}</td>
+          <td>{{ player['NAME'] }}</td>
+          <td>{{ player['TEAM'] }}</td>
+          <td>{{ player['POS'] }}</td>
+          <td>{{ player['AGE'] }}</td>
+          <td>{{ player['PPG'] }}</td>
+          <td>{{ player['RPG'] }}</td>
+          <td>{{ player['APG'] }}</td>
+          <td>{{ player['SPG'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button id="show-more">Show More</button>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{{ url_for('static', filename='js/show_more.js') }}"></script>
 {% endblock %}

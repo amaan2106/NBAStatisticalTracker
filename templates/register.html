@@ -17,26 +17,18 @@
 {% endwith %}
 
 <p>
-            <form action="/api/register" method="POST">
-        <label> Username: </label>
-        <input
-          type="text"
-          name="username"
-          placeholder="Enter user name"
-          required
-        />
-        <br>
-        <label> Password: </label>
-        <input
-            type = "password"
-            name = "password"
-            placeholder="Enter password"
-            required
-        />
-        <br>
-        <input type="submit" value="Submit" />
-
-        </p>
+  <form action="/api/register" method="POST">
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" name="username" placeholder="Enter A Username Here" >
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Choose a password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</p>
 
 
 {% endblock %}
